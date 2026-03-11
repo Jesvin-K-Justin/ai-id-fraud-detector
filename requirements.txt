@@ -1,0 +1,11 @@
+streamlit
+opencv-python
+easyocr
+exifread
+mtcnn
+transformers
+torch
+Pillow
+numpy
+python-dotenv
+groq

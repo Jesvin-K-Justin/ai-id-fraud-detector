@@ -1,0 +1,7 @@
+.env
+__pycache__/
+*.pyc
+uploaded_image.jpg
+temp_compressed.jpg
+.cache/
+.streamlit/
