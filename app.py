@@ -1,14 +1,13 @@
 import streamlit as st
+
+st.set_page_config(page_title="AI ID Fraud Detector", layout="wide")
+
 import numpy as np
 import cv2
 from PIL import Image
-
 from cv_pipeline import run_cv_pipeline
 from fusion_engine import compute_risk_score
 from vision_model import analyze_image_with_vision
-
-
-st.set_page_config(page_title="AI ID Fraud Detector", layout="wide")
 
 st.title("AI ID Document Forgery Detector")
 
