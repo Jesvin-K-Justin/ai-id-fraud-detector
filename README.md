@@ -23,8 +23,7 @@ This project analyzes uploaded ID document images and produces a fraud risk repo
 
 ## Example Workflow
 
-- Upload ID document
-      Upload an ID image and the system will:
+- Upload ID image and the system will:
       - Perform forensic image analysis
       - Detect text and faces
       - Highlight possible tampered regions
