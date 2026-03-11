@@ -17,9 +17,9 @@ uploaded_file = st.file_uploader(
 )
 
 
-# -----------------------------
-# Draw OCR + Face Detection
-# -----------------------------
+
+# Draw OCR + Face detection boxes
+
 def draw_visualizations(image, cv_results):
 
     img = image.copy()
@@ -50,9 +50,9 @@ def draw_visualizations(image, cv_results):
     return img
 
 
-# -----------------------------
+
 # Forgery Heatmap (ELA)
-# -----------------------------
+
 def generate_forgery_heatmap(image):
 
     _, encoded = cv2.imencode(".jpg", image, [cv2.IMWRITE_JPEG_QUALITY, 90])
@@ -82,9 +82,9 @@ def overlay_heatmap(image, heatmap, alpha=0.6):
     return overlay
 
 
-# -----------------------------
+
 # Main App
-# -----------------------------
+
 if uploaded_file:
 
     # Load image
@@ -103,15 +103,15 @@ if uploaded_file:
         cv_image = np.array(image)
         cv_image = cv2.cvtColor(cv_image, cv2.COLOR_RGB2BGR)
 
-        # -----------------------------
+        
         # CV Pipeline
-        # -----------------------------
+        
         with st.spinner("Running image forensic analysis..."):
             cv_results = run_cv_pipeline(cv_image, uploaded_file)
 
-        # -----------------------------
+        
         # Draw OCR + Face boxes
-        # -----------------------------
+        
         vis_image = draw_visualizations(cv_image, cv_results)
 
         st.write("## Visual Document Analysis")
@@ -122,9 +122,9 @@ if uploaded_file:
             use_column_width=True
         )
 
-        # -----------------------------
+        
         # Forgery Heatmap
-        # -----------------------------
+        
         heatmap = generate_forgery_heatmap(cv_image)
 
         overlay = overlay_heatmap(cv_image, heatmap)
@@ -147,15 +147,15 @@ if uploaded_file:
                 use_column_width=True
             )
 
-        # -----------------------------
+        
         # Vision Model
-        # -----------------------------
+        
         with st.spinner("Running vision model analysis..."):
             vision_results = analyze_image_with_vision(image_path)
 
-        # -----------------------------
+        
         # Fusion Scoring
-        # -----------------------------
+        
         score, level, indicators = compute_risk_score(cv_results, vision_results)
 
         st.subheader("Fraud Detection Report")
